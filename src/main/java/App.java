@@ -6,6 +6,7 @@ import dao.Sql2oUsersDao;
 import exceptions.ApiException;
 import models.Departments;
 import models.News;
+import models.Users;
 import org.h2.util.New;
 import org.sql2o.Sql2o;
 
@@ -77,6 +78,22 @@ public class App {
            }else {
                return "{\"message\":\"I'm sorry, but department has no users.\"}";
            }
+        });
+        /*--------------------------DEPARTMENTS END-----------------------------------------*/
+
+        /*--------------------------USERS-----------------------------------------*/
+        get("/users", "application/json",(request, response) -> {
+            if(sql2oUsersDao.getAll().size()>0){
+                return gson.toJson(sql2oUsersDao.getAll());
+            }else {
+                return "{\"message\":\"I'm sorry, but no users are currently listed in the database.\"}";
+            }
+        });
+        post("users/new", "application/json",(request, response) -> {
+            Users user = gson.fromJson(request.body(), Users.class);
+            sql2oUsersDao.add(user);
+            response.status(201);
+            return gson.toJson(user);
         });
     }
 }
