@@ -40,11 +40,10 @@ build/
 out/
 out
 .gradle
+gradle
 gradlew.bat
-!gradle-wrapper.jar
+gradlew
 settings.gradle
-models.Credentials.java
-src/main/java/models/Credentials.java
 
 # IntelliJ #
 ############
