@@ -135,6 +135,15 @@ public class App {
             return gson.toJson(departmentUsers);
         });
         /*--------------------------USERS END-----------------------------------------*/
+
+        /*--------------------------NEWS-----------------------------------------*/
+        get("news/general", "application/json", (request, response) -> {
+            if(sql2oNewsDao.getAll().size()>0){
+                return gson.toJson(sql2oNewsDao.getAll());
+            }else{
+                return "{\"message\":\"I'm sorry, but user is in no department.\"}";
+            }
+        });
     }
 }
 
