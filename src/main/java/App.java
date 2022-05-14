@@ -144,8 +144,54 @@ public class App {
                 return "{\"message\":\"I'm sorry, but user is in no department.\"}";
             }
         });
+        get("/news/department/:id", "application/json",(request, response) -> {
+            int id = Integer.parseInt(request.params("id"));
+            Departments departments = sql2oDepartmentsDao.findById(id);
+            if(departments==null){
+                throw new ApiException(404, String.format("No department with the Id : \"%s\"," +
+                        request.params("id")));
+            }
+            else if(sql2oDepartmentsDao.getDepartmentNews(id).size()>0){
+                return gson.toJson(sql2oDepartmentsDao.getDepartmentNews(id));
+            }
+            else{
+                return "{\"message\":\"I'm sorry, but no news in this department.\"}";
+            }
+        });
+        post("/news/new/general","application/json",(request, response) -> {
+            News news =gson.fromJson(request.body(),News.class);
+            sql2oNewsDao.addNews(news);
+            response.status(201);
+            return gson.toJson(news);
+        });
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
