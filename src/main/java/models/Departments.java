@@ -1,5 +1,7 @@
 package models;
 
+import java.util.Objects;
+
 public class Departments {
     private int id;
     private String name;
@@ -34,5 +36,21 @@ public class Departments {
 
     public void setSize(int size) {
         this.size = size;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Departments)) return false;
+        Departments that = (Departments) o;
+        return id == that.id &&
+                size == that.size &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name);
     }
 }
