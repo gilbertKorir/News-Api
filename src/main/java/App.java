@@ -158,11 +158,41 @@ public class App {
                 return "{\"message\":\"I'm sorry, but no news in this department.\"}";
             }
         });
-        post("/news/new/general","application/json",(request, response) -> {
+        post("/news/general/new","application/json",(request, response) -> {
             News news =gson.fromJson(request.body(),News.class);
             sql2oNewsDao.addNews(news);
             response.status(201);
             return gson.toJson(news);
+        });
+        post("news/department/new","application/json", (request, response) -> {
+            News departmentNews = gson.fromJson(request.body(), News.class);
+            Departments departments = sql2oDepartmentsDao.findById(departmentNews.getDepartment_id());
+            Users users = sql2oUsersDao.findById(departmentNews.getUser_id());
+
+            if(departments==null){
+                throw new ApiException(404, String.format("No department with the id: \"%s\" exists",
+                        request.params("id")));
+            }
+            if(users==null){
+                throw new ApiException(404, String.format("No user with the id: \"%s\" exists",
+                        request.params("id")));
+            }
+            sql2oNewsDao.addNews(departmentNews);
+            response.status(201);
+            return gson.toJson(departmentNews);
+        });
+        /*----------------------FILTERS------------------------*/
+        exception(ApiException.class, (exception, request,response)->{
+            ApiException err = exception;
+            Map<String, Object> jsonMap = new HashMap<>();
+            jsonMap.put("status", err.getStatusCode());
+            jsonMap.put("errorMessage", err.getMessage());
+            response.type("application/json");
+            response.status(err.getStatusCode());
+            response.body(gson.toJson(jsonMap));
+        });
+        after((request, response) -> {
+            response.type("application/json");
         });
     }
 }
