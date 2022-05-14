@@ -65,9 +65,17 @@ public class App {
         get("/department/:id","application/json", (request, response) -> {
            int id = Integer.parseInt(request.params("id"));
            if(sql2oDepartmentsDao.findById(id)==null){
-               throw new ApiException(404, String.format("No depart with the id: \"%s\" exists"));
+               throw new ApiException(404, String.format("No department with the id: \"%s\" exists"));
            }else {
                return gson.toJson(sql2oDepartmentsDao.findById(id));
+           }
+        });
+        get("/department/:id/users", "application.json", (request, response) -> {
+           int id = Integer.parseInt(request.params("id"));
+           if(sql2oDepartmentsDao.getAllUsersInDepartment(id).size()>0){
+               return gson.toJson(sql2oDepartmentsDao.getAllUsersInDepartment(id));
+           }else {
+               return "{\"message\":\"I'm sorry, but department has no users.\"}";
            }
         });
     }
