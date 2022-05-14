@@ -3,6 +3,8 @@ import dao.NewsDao;
 import dao.Sql2oDepartmentsDao;
 import dao.Sql2oNewsDao;
 import dao.Sql2oUsersDao;
+import exceptions.ApiException;
+import models.Departments;
 import models.News;
 import org.h2.util.New;
 import org.sql2o.Sql2o;
@@ -53,6 +55,20 @@ public class App {
             else {
                 return "{\"message\":\"I'm sorry, but no departments are currently listed in the database.\"}";
             }
+        });
+        post("department/new", "application/json",(request, response) -> {
+            Departments departments = gson.fromJson(request.body(), Departments.class);
+            sql2oDepartmentsDao.add(departments);
+            response.status(201);
+            return gson.toJson(departments);
+        });
+        get("/department/:id","application/json", (request, response) -> {
+           int id = Integer.parseInt(request.params("id"));
+           if(sql2oDepartmentsDao.findById(id)==null){
+               throw new ApiException(404, String.format("No depart with the id: \"%s\" exists"));
+           }else {
+               return gson.toJson(sql2oDepartmentsDao.findById(id));
+           }
         });
     }
 }
