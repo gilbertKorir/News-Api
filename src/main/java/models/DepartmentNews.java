@@ -12,4 +12,13 @@ public class DepartmentNews extends News{
         this.news_type=TYPE_OF_NEWS;
     }
 
+    @Override
+    public int getDepartment_id() {
+        return department_id;
+    }
+
+    @Override
+    public String getNews_type() {
+        return news_type;
+    }
 }
