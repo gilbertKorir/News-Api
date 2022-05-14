@@ -12,4 +12,19 @@ public class Users {
         this.staff_role = staff_role;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public String getPosition() {
+        return position;
+    }
+
+    public String getStaff_role() {
+        return staff_role;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }
