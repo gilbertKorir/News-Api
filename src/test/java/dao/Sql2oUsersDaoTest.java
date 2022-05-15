@@ -51,6 +51,26 @@ class Sql2oUsersDaoTest {
         assertEquals(user1.getName(),sql2oUsersDao.getAll().get(0).getName());
         assertEquals(user2.getName(),sql2oUsersDao.getAll().get(1).getName());
     }
+    @Test
+    public void addedUserIsReturnedCorrectly() {
+        Users user = new Users("John", "Delivery Assosciate", "editor");
+        sql2oUsersDao.add(user);
+        assertEquals(user.getName(),sql2oUsersDao.findById(user.getId()).getName());
+    }
+    @Test
+    public void findingParticularUser(){
+        Users user = new Users("joe","Administrator","boundary");
+        Users user3 = new Users("paul","Administrator","boundary");
+        Users foundUser = sql2oUsersDao.findById(user3.getId());
+        assertEquals(false, user.equals(foundUser));
+    }
+    @Test
+    public void deleteAllUsers_int(){
+        Users user1 = new Users("joe","Administrator","boundary");
+        Users user2 = new Users("mark","developer","general");
+        sql2oUsersDao.clearAll();
+        assertEquals(0, sql2oUsersDao.getAll().size());
+    }
 
 }
 
