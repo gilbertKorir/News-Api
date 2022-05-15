@@ -22,14 +22,10 @@ class Sql2oNewsDaoTest {
 
     @BeforeEach
     public void setUp() throws Exception {
-        //uncomment the two lines below to run locally and change to your  credentials
         String connectionString = "jdbc:postgresql://localhost:5432/news_portal_test";
 //        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:/create.sql'";
         Sql2o sql2o = new Sql2o(connectionString, "postgres", "1234");
 
-        //comment the two lines below to run locally
-//        String connectionString = "jdbc:postgresql://ec2-18-215-99-63.compute-1.amazonaws.com:5432/da93g9c21mukon";
-//        Sql2o sql2o = new Sql2o(connectionString, "fvvikmppgjhovk", "c5fc3da5048cda471e429f687669b2eec7bca3c7c07d83df5681f43d9f5bfc28");
         sql2oDepartmentsDao=new Sql2oDepartmentsDao(sql2o);
         sql2oUsersDao=new Sql2oUsersDao(sql2o);
         sql2oNewsDao=new Sql2oNewsDao(sql2o);
@@ -87,9 +83,22 @@ class Sql2oNewsDaoTest {
         sql2oNewsDao.addNews(news);
         assertEquals(2,sql2oNewsDao.getAll().size());
     }
-
+//    @Test
+//    public void findingParticularUser(){
+//        News user = set();
+//        Users user2 = setUpNewUsers();
+//        Users foundUser = sql2oUsersDao.findById(user.getId());
+//        assertTrue(user.equals(foundUser));
+//    }
+    @Test
+    public void deleteAllUsers(){
+        Users user = setUpNewUsers();
+        Users user2 = setUpNewUsers();
+        sql2oUsersDao.clearAll();
+        assertEquals(0, sql2oUsersDao.getAll().size());
+    }
     private Departments setUpDepartment() {
-        return new Departments("Editing","editing of books",3);
+        return new Departments("Message Delivery","editing of books",3);
     }
     private Users setUpNewUsers() {
         return new Users("Moses John","Manager","Editor");
