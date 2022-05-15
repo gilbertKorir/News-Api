@@ -42,6 +42,15 @@ class Sql2oUsersDaoTest {
         Users user = new Users("John", "Delivery Assosciate", "editor");
         sql2oUsersDao.add(user);
     }
+    @Test
+    public void allInstancesAreReturned() {
+        Users user1 = new Users("joe","Administrator","boundary");
+        Users user2 = new Users("mark","developer","general");
+        sql2oUsersDao.add(user1);
+        sql2oUsersDao.add(user2);
+        assertEquals(user1.getName(),sql2oUsersDao.getAll().get(0).getName());
+        assertEquals(user2.getName(),sql2oUsersDao.getAll().get(1).getName());
+    }
 
 }
 
