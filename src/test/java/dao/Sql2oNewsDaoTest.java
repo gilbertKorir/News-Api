@@ -50,9 +50,8 @@ class Sql2oNewsDaoTest {
         sql2oUsersDao.add(users);
         Departments departments=setUpDepartment();
         sql2oDepartmentsDao.add(departments);
-        News news=new News("Meeting","Meeting to set activities for team building",users.getId());
+        News news=new News("Breaking News","Additional member to our department",users.getId());
         sql2oNewsDao.addNews(news);
-
         assertEquals(users.getId(),sql2oNewsDao.findById(news.getId()).getUser_id());
         assertEquals(news.getDepartment_id(),sql2oNewsDao.findById(news.getId()).getDepartment_id());
     }
