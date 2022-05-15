@@ -1,6 +1,7 @@
 package dao;
 
 import models.Departments;
+import models.Users;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -55,6 +56,24 @@ class Sql2oDepartmentsDaoTest {
         Departments department2 = new Departments("Delivery", "Everywhere you are",12);
         assertTrue(sql2oDepartmentsDao.getAll().contains(department));
         assertTrue(sql2oDepartmentsDao.getAll().contains(department2));
+    }
+
+    @Test
+    public void addUserToDepartment(){
+        Departments department = newDept();
+        Users user = new Users ("jared", "Manager","delivery");
+        sql2oDepartmentsDao.addUserToDepartment(user,department);
+        assertEquals("Delivery",user.getName());
+    }
+    @Test
+    public void getUsersInADepartment(){
+        Departments department = newDept();
+        Users user1 = new Users ("victor", "Manager","delivery");
+        Users user2 = new Users ("makori", "Team builder","delivery");
+        sql2oDepartmentsDao.addUserToDepartment(user1, department);
+        sql2oDepartmentsDao.addUserToDepartment(user2, department);
+        int IdOne = sql2oDepartmentsDao.getAllUsersInDepartment(department.getId()).get(0).getId();
+        assertEquals(user1.getId(),IdOne);
     }
 
 }

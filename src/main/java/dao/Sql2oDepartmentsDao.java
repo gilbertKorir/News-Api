@@ -113,4 +113,19 @@ public class Sql2oDepartmentsDao implements DepartmentsDao {
             System.out.println(e);
         }
     }
+
+    @Override
+    public void deleteDepartmentById(int id) {
+
+    }
+
+    @Override
+    public void deleteEmployeeFromDept(Departments departments, Users users) {
+
+    }
+
+    @Override
+    public void deleteDeptNewsById(int deptId, int newsId) {
+
+    }
 }
