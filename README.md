@@ -47,28 +47,28 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 
 ### General News
 {
-"title":"Branches Opening",
-"description":"Increasing the staff",
-"user_id":3
+"title":"Branches Opening",\
+"description":"Increasing the staff",\
+"user_id":3\
 }
 
 ### Department news
 {
-"title":"End of Year statement",
-"description":"Profit Analysis",
-"department_id":2,
-"user_id":4
+"title":"End of Year statement",\
+"description":"Profit Analysis",\
+"department_id":2,\
+"user_id":4\
 }
 ### user
 {
-"name":"Victor Mark"
-"position":"Hr",
-"staff_role":"Reviewer"
+"name":"Victor Mark"\
+"position":"Hr",\
+"staff_role":"Reviewer"\
 }
 ### Department
 {
-"name":"IT",
-"description":"Technology Related News"
+"name":"IT",\
+"description":"Technology Related News"\
 }
 
 ##### Java
