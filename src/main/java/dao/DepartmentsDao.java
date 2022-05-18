@@ -21,7 +21,7 @@ public interface DepartmentsDao {
     //delete
     void clearAll();
     void deleteDepartmentById(int id);
-    void deleteEmployeeFromDept(Departments departments,Users users);
+    void deleteUserFromDept(Departments departments,Users users);
     void deleteDeptNewsById(int deptId, int newsId);
 
 }

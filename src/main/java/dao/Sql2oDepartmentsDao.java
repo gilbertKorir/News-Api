@@ -120,7 +120,7 @@ public class Sql2oDepartmentsDao implements DepartmentsDao {
     }
 
     @Override
-    public void deleteEmployeeFromDept(Departments departments, Users users) {
+    public void deleteUserFromDept(Departments departments, Users users) {
 
     }
 
