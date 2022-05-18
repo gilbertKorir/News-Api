@@ -1,0 +1,15 @@
+/home/moringa/IdeaProjects/News-portal/src/main/java/models/DepartmentNews.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/Sql2oDepartmentsDao.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/models/News.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/models/Web.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/WebDao.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/DepartmentsDao.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/UsersDao.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/NewsDao.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/exceptions/ApiException.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/models/Departments.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/Sql2oNewsDao.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/Sql2oUsersDao.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/models/Users.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/App.java
+/home/moringa/IdeaProjects/News-portal/src/main/java/dao/Sql2oWebDao.java

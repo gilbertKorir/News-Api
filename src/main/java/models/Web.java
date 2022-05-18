@@ -11,4 +11,15 @@ public class Web {
         this.path = path;
     }
 
+    public String getId() {
+        return id;
+    }
+
+    public String getDescr() {
+        return descr;
+    }
+
+    public String getPath() {
+        return path;
+    }
 }

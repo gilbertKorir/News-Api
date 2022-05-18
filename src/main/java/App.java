@@ -1,13 +1,10 @@
 import com.google.gson.Gson;
-import dao.NewsDao;
-import dao.Sql2oDepartmentsDao;
-import dao.Sql2oNewsDao;
-import dao.Sql2oUsersDao;
+import dao.*;
 import exceptions.ApiException;
 import models.Departments;
 import models.News;
 import models.Users;
-import org.h2.util.New;
+//import org.h2.util.New;
 import org.sql2o.Sql2o;
 
 
@@ -29,23 +26,25 @@ public class App {
         Sql2oNewsDao sql2oNewsDao;
         Sql2oUsersDao sql2oUsersDao;
         Sql2oDepartmentsDao sql2oDepartmentsDao;
+        Sql2oWebDao sql2oWebDao;
         Connection conn;
         Gson gson = new Gson();
         staticFileLocation("/public");
 
         /*---------------- LOCAL DATABASE-----------------------------*/
-        String connectionString = "jdbc:postgresql://localhost:5432/news_portal";
-        Sql2o sql2o = new Sql2o(connectionString, "postgres", "1234");
+//        String connectionString = "jdbc:postgresql://localhost:5432/news_portal";
+//        Sql2o sql2o = new Sql2o(connectionString, "postgres", "1234");
         /*-----------------------------------------------------------*/
 
         /*---------------- HEROKU DATABASE-----------------------------*/
-//        String connectionString = "jdbc:postgresql://ec2-50-17-21-170.compute-1.amazonaws.com:5432/d8b8ehu0safpui"; //!
-//        Sql2o sql2o = new Sql2o(connectionString, "mihpivzxyyqmlv", "5b4f9d76874ad368465a325b3993140263c6d254771908c3d283842d54fcad11");
+        String connectionString = "jdbc:postgresql://ec2-44-194-117-205.compute-1.amazonaws.com:5432/d3ao1fne8ns4sq"; //!
+        Sql2o sql2o = new Sql2o(connectionString, "qolprnzdjugeme", "d31953431c986ba7f809654330bb35d8c501656c4148ad93055a4f55a973fb54");
         /*------------------------------------------------------------*/
 
         sql2oDepartmentsDao=new Sql2oDepartmentsDao(sql2o);
         sql2oNewsDao=new Sql2oNewsDao(sql2o);
         sql2oUsersDao=new Sql2oUsersDao(sql2o);
+        sql2oWebDao= new Sql2oWebDao(sql2o);
         conn=sql2o.open();
 
         /*----------------  DEPARTMENTS -----------------------------*/
@@ -181,6 +180,9 @@ public class App {
             response.status(201);
             return gson.toJson(departmentNews);
         });
+//        get("/sitemap","application/json",(request, response) ->{
+//            return gson.toJson(sql2oWebDao.allPaths());
+//        });
         /*----------------------FILTERS------------------------*/
         exception(ApiException.class, (exception, request,response)->{
             ApiException err = exception;
