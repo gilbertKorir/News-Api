@@ -32,6 +32,4 @@ department_id INT
 
 
 
-
-
 CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;

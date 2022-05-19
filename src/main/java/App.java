@@ -32,13 +32,13 @@ public class App {
         staticFileLocation("/public");
 
         /*---------------- LOCAL DATABASE-----------------------------*/
-//        String connectionString = "jdbc:postgresql://localhost:5432/news_portal";
-//        Sql2o sql2o = new Sql2o(connectionString, "postgres", "1234");
+        String connectionString = "jdbc:postgresql://localhost:5432/news_portal";
+        Sql2o sql2o = new Sql2o(connectionString, "postgres", "1234");
         /*-----------------------------------------------------------*/
 
         /*---------------- HEROKU DATABASE-----------------------------*/
-        String connectionString = "jdbc:postgresql://ec2-44-194-117-205.compute-1.amazonaws.com:5432/d3ao1fne8ns4sq"; //!
-        Sql2o sql2o = new Sql2o(connectionString, "qolprnzdjugeme", "d31953431c986ba7f809654330bb35d8c501656c4148ad93055a4f55a973fb54");
+//        String connectionString = "jdbc:postgresql://ec2-44-194-117-205.compute-1.amazonaws.com:5432/d3ao1fne8ns4sq"; //!
+//        Sql2o sql2o = new Sql2o(connectionString, "qolprnzdjugeme", "d31953431c986ba7f809654330bb35d8c501656c4148ad93055a4f55a973fb54");
         /*------------------------------------------------------------*/
 
         sql2oDepartmentsDao=new Sql2oDepartmentsDao(sql2o);

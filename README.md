@@ -47,23 +47,29 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 
 ### General News
 {
-"title":"Branches Opening",\
-"description":"Increasing the staff",\
-"user_id":3\
+"id": 1,\
+"user_id": 4,\
+"department_id": 0,\
+"title": "dff",\
+"news_type": "general",\
+"description": "dfff"\
 }
 
 ### Department news
 {
-"title":"End of Year statement",\
-"description":"Profit Analysis",\
-"department_id":2,\
-"user_id":4\
+{
+"id": 2,\
+"name": "Engineering",\
+"description": "Check updates",\
+"size": 16\
+},
 }
 ### user
 {
-"name":"Victor Mark"\
-"position":"Hr",\
-"staff_role":"Reviewer"\
+"id": 1,
+"name": "Japhet",
+"position": "Assistant manager",
+"staff_role": "Mail check"
 }
 ### Department
 {
