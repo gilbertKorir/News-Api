@@ -52,7 +52,7 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
         "department_id": 2,\
         "user_id": 2,\
         "title": "Tuko news",\
-        "description": "Trends and amazes"\
+        "description": "Trends and amazes"
     }
 
 ### Get news
@@ -94,10 +94,12 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 }
 
 ### Get Users
+
 <p>GET: 0.0.0.0:4567/users</p>
 {"id":1,"name":"Livestock","description":"updates","size":12}
 
-## Get user number 1
+### Get user number 1
+
 <p>GET:0.0.0.0:4567/users/1</p>
 {
 "id": 1,
@@ -107,7 +109,6 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 }
 
 ## User and Departments
-
 ### Add user in the department
 <p>POST:0.0.0.0:4567/add/user/1/department/1</p>
 {
@@ -116,6 +117,7 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 }
 
 ### Get users from the department 
+
 <p>GET:0.0.0.0:4567/users/1/departments </p>
 
 {
