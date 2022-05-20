@@ -110,11 +110,12 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 
 ## User and Departments
 
+
 ### Add user in the department
 <p>POST:0.0.0.0:4567/add/user/1/department/1</p>
 {
-    "user_id": 1,\
-    "department_id":3\
+    "user_id": 1,
+    "department_id":3
 }
 
 ### Get users from the department 
