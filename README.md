@@ -108,7 +108,7 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 "staff_role": "Mail check"
 }
 
-## User and Departments
+### User and Departments
 
 
 ### Add user in the department
