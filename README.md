@@ -48,10 +48,10 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 #### Add News
 <p> POST: 0.0.0.0:4567/news/general/new</p>
   {
-        "news_type": "department",\
-        "department_id": 2,\
-        "user_id": 2,\
-        "title": "Tuko news",\
+        "news_type": "department",
+        "department_id": 2,
+        "user_id": 2,
+        "title": "Tuko news",
         "description": "Trends and amazes"
     }
 
@@ -109,6 +109,7 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 }
 
 ## User and Departments
+
 ### Add user in the department
 <p>POST:0.0.0.0:4567/add/user/1/department/1</p>
 {
