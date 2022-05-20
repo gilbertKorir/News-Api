@@ -44,37 +44,85 @@ CREATE DATABASE news_portal_test WITH TEMPLATE news_portal;
 + The last command creates the test database that shall be used to run your tests on. insert `\q` to exit psql server.
 
 ## API Documentation
+### News
+#### Add News
+<p> POST: 0.0.0.0:4567/news/general/new</p>
+  {
+        "news_type": "department",\
+        "department_id": 2,\
+        "user_id": 2,\
+        "title": "Tuko news",\
+        "description": "Trends and amazes"\
+    }
 
-### General News
-{
-"id": 1,\
-"user_id": 4,\
-"department_id": 0,\
-"title": "dff",\
-"news_type": "general",\
-"description": "dfff"\
-}
+### Get news
+<p>GET :0.0.0.0:4567/news/general</p>
 
-### Department news
+{"id":11,"user_id":2,"department_id":2,"title":"Tuko news","news_type":"department","description":"Trends and amazes"}
+
+
+### Department 
+
+#### Add department
+
+<p> POST: 0.0.0.0:4567/department/new</p>
+
+##### insert the following into the raw Body
+
 {
-{
-"id": 2,\
-"name": "Engineering",\
-"description": "Check updates",\
-"size": 16\
-},
+"name":"Livestock",\
+"description":"updates",\
+"size":12\
 }
+### Get departments
+
+<p>GET: 0.0.0.0:4567/department</p>
+
+{"id":1,"name":"Livestock","description":"updates","size":12}
+
 ### user
+#### Add user
+
+<p> POST: 0.0.0.0:4567/users/new</p>
+
+##### insert the following into the raw Body
+
+{
+"name": "Ambrose",
+"position": "Assistant manager",
+"staff_role": "Mail check"
+}
+
+### Get Users
+<p>GET: 0.0.0.0:4567/users</p>
+{"id":1,"name":"Livestock","description":"updates","size":12}
+
+## Get user number 1
+<p>GET:0.0.0.0:4567/users/1</p>
 {
 "id": 1,
 "name": "Japhet",
 "position": "Assistant manager",
 "staff_role": "Mail check"
 }
-### Department
+
+## User and Departments
+
+### Add user in the department
+<p>POST:0.0.0.0:4567/add/user/1/department/1</p>
 {
-"name":"IT",\
-"description":"Technology Related News"\
+    "user_id": 1,\
+    "department_id":3\
+}
+
+### Get users from the department 
+<p>GET:0.0.0.0:4567/users/1/departments </p>
+
+{
+"id": 1,
+"name": "IT",
+"description": "IT section daily",
+"size": 8
 }
 
 ##### Java

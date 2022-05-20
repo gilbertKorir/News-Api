@@ -1,4 +1,5 @@
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import dao.*;
 import exceptions.ApiException;
 import models.Departments;
@@ -29,6 +30,10 @@ public class App {
         Sql2oWebDao sql2oWebDao;
         Connection conn;
         Gson gson = new Gson();
+//
+//        Gson gson = new GsonBuilder()
+//                .setLenient()
+//                .create();
         staticFileLocation("/public");
 
         /*---------------- LOCAL DATABASE-----------------------------*/
@@ -56,7 +61,7 @@ public class App {
                 return "{\"message\":\"I'm sorry, but no departments are currently listed in the database.\"}";
             }
         });
-        post("department/new", "application/json",(request, response) -> {
+        post("/department/new", "application/json",(request, response) -> {
             Departments departments = gson.fromJson(request.body(), Departments.class);
             sql2oDepartmentsDao.add(departments);
             response.status(201);
@@ -136,7 +141,7 @@ public class App {
         /*--------------------------USERS END-----------------------------------------*/
 
         /*--------------------------NEWS-----------------------------------------*/
-        get("news/general", "application/json", (request, response) -> {
+        get("/news/general", "application/json", (request, response) -> {
             if(sql2oNewsDao.getAll().size()>0){
                 return gson.toJson(sql2oNewsDao.getAll());
             }else{
@@ -158,12 +163,12 @@ public class App {
             }
         });
         post("/news/general/new","application/json",(request, response) -> {
-            News news =gson.fromJson(request.body(),News.class);
+            News news = gson.fromJson(request.body(),News.class);
             sql2oNewsDao.addNews(news);
             response.status(201);
             return gson.toJson(news);
         });
-        post("news/department/new","application/json", (request, response) -> {
+        post("/news/department/new","application/json", (request, response) -> {
             News departmentNews = gson.fromJson(request.body(), News.class);
             Departments departments = sql2oDepartmentsDao.findById(departmentNews.getDepartment_id());
             Users users = sql2oUsersDao.findById(departmentNews.getUser_id());
